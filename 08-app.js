@@ -15,6 +15,8 @@ let pessoa = {
         return this.nome + " " + this.sobrenome
     }
 }
+console.log(pessoa)
+pessoa.relacionamento = "Casado";
 
 console.log(pessoa)
 console.log(pessoa.nome)
