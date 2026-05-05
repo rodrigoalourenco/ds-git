@@ -16,6 +16,10 @@ export const User = sequelize.define("User", {
         allowNull: false,
         unique: true
     },
+    last_name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    }
 }, {
     tableName: "users",
     timestamps: true
