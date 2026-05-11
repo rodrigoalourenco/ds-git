@@ -17,34 +17,34 @@ import CategoriaProduto from "./models/CategoriaProduto.js";
         nome: "MacBook Pro",
         preco: 10999.99,
         descricao: "Notebook de alta performance",
-        idFabrincante: novoFabrincante.id,
+        idFabricante: novoFabrincante.id,
     })
     const novoProduto2 = await Produto.create({
         nome: "MacBook Air",
         preco: 7999.99,
         descricao: "Notebook de alta performance",
-        idFabrincante: novoFabrincante.id,
+        idFabricante: novoFabrincante.id,
     })
     console.log(novoProduto);
     
     // 1:1
     // Lazy Loading
-    // const produtoLazy = await Produto.findByPk(1);
-    // const fabricanteLazy = await produtoLazy.getFabricante();
-    // console.log(fabricanteLazy.nome);
+    const produtoLazy = await Produto.findByPk(1);
+    const fabricanteLazy = await produtoLazy.getFabricante();
+    console.log("1:1 Lazy\n", fabricanteLazy.nome);
 
     // Eager Loading
     const produtoEager = await Produto.findByPk(1, {
         include: [Fabricante]
     });
-    console.log(produtoEager.Fabricante.nome);
+    console.log("1:1 Eager\n", produtoEager.fabricante.nome);
 
     // 1:N
     const fabricante1ToN = await Fabricante.findByPk(1, {
         include: [Produto]
     }); 
-    //const produtos = await fabricante1ToN.getProdutos();
-    console.log(fabricante1ToN.produtos);
+    const produtos = await fabricante1ToN.getProdutos();
+    console.log("1:N\n", fabricante1ToN.produtos);
 
     // N:M
     const novaCategoria = await Categoria.create({
@@ -57,14 +57,6 @@ import CategoriaProduto from "./models/CategoriaProduto.js";
     const produtoNtoM = await Produto.findByPk(1, {
         include: [Categoria]
     });
-    console.log(produtoNtoM.categoria);
-
-    
-
-
-
-    
-
-
+    console.log("N:M\n", produtoNtoM.categoria);
     
 })();

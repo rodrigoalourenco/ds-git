@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import connectDB from "../config/dbTestSequelize.js";
 import Fabricante from "./Fabricante.js";
+import Categoria from "./Categoria.js";
 import CategoriaProduto from "./CategoriaProduto.js";
 
 
@@ -52,7 +53,5 @@ Produto.hasMany(CategoriaProduto, {foreignKey: "idProduto"});
 CategoriaProduto.belongsTo(Produto, {foreignKey: "idProduto"});
 Categoria.hasMany(CategoriaProduto, {foreignKey: "idCategoria"});
 CategoriaProduto.belongsTo(Categoria, {foreignKey: "idCategoria"}); 
-
-
 
 export default Produto;
