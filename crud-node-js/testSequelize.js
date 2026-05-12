@@ -53,6 +53,8 @@ import CategoriaProduto from "./models/CategoriaProduto.js";
 
     const produto = await Produto.findByPk(1);
     await produto.setCategoria(novaCategoria);
+    console.log("N:M\n", produto.categoria);
+    
 
     const produtoNtoM = await Produto.findByPk(1, {
         include: [Categoria]
