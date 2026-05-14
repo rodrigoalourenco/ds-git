@@ -19,14 +19,21 @@ project/
 
 ## Comandos
 
+### Iniciando Projeto NodeJS
+
+``` 
+npm init -y 
+```
+
 ### Instalação
 ```
-npm init -y
 npm install express sequelize mysql2 cors
 npm install --save-dev nodemon dotenv
 
 npm install swagger-ui-express swagger-jsdoc
 npm install --save-dev sequelize-cli
+
+npm install jsonwebtoken bcryptjs
 ```
 
 ### Migrations
@@ -36,7 +43,10 @@ npx sequelize-cli init
 ```
 
 ### Criando database
-``` npx sequelize-cli db:create nomeBaseDados ```
+
+```
+npx sequelize-cli db:create 
+```
 
 ### Criando migration
 ```
