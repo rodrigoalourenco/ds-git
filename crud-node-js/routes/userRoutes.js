@@ -26,6 +26,8 @@ const controller = new UserController();
  *                 type: string
  *               email:
  *                 type: string
+ *               password:
+ *                 type: string
  *     responses:
  *       201:
  *         description: Usuário criado
@@ -102,6 +104,8 @@ router.get("/user/:id", authMiddleware, controller.getUser)
  *               last_name:
  *                 type: string
  *               email:
+ *                 type: string
+ *               password:
  *                 type: string
  *     responses:
  *       200:

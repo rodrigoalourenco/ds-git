@@ -13,6 +13,14 @@ export class UserRepository {
         return await User.findByPk(id);
     }
 
+    async getUserByEmail(email) {
+        return await User.findOne({
+            where: {
+                email: email
+            }
+        });
+    }
+
     async updateUser(user, data) {
         return await user.update(data);
     }

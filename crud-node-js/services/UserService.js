@@ -1,3 +1,4 @@
+import bcrypt from "bcryptjs";
 import { UserRepository } from "../repository/UserRepository.js";
 
 export class UserService {
@@ -6,8 +7,15 @@ export class UserService {
     }
     
     async createUser(data) {
-        // regra de negocio
-        return await this.repository.createUser(data);
+        const userExists = await this.repository.getUserByEmail(data.email);
+        if(userExists) {
+            throw new Error("Email já cadastrado");
+        }
+        const hashedPassword = await bcrypt.hash(data.password, 10);
+        return await this.repository.createUser({
+            ...data,
+            password: hashedPassword
+        });
     }
 
     async getUsers() {
