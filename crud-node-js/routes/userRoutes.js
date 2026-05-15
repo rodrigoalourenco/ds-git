@@ -1,14 +1,9 @@
 import { Router } from "express";
-import {
-    createUser,
-    getUsers,
-    getUser,
-    updateUser,
-    deleteUser
-} from "../controllers/userController.js";
+import { UserController } from "../controllers/userController.js";
 import { authMiddleware } from "../middleware/authMiddleware.js";
 
 const router = Router();
+const controller = new UserController();
 
 /**
  * @swagger
@@ -37,7 +32,7 @@ const router = Router();
  *       500:
  *          description: Erro ao listar usuários
  */
-router.post("/user", authMiddleware, createUser)
+router.post("/user", authMiddleware, controller.createUser)
 
 /**
  * @swagger
@@ -53,7 +48,7 @@ router.post("/user", authMiddleware, createUser)
  *       500:
  *         description: Erro ao listar usuários
  */
-router.get("/user", authMiddleware, getUsers)
+router.get("/user", authMiddleware, controller.getUsers)
 
 /**
  * @swagger
@@ -78,7 +73,7 @@ router.get("/user", authMiddleware, getUsers)
  *       500:
  *         description: Erro ao buscar usuário
  */
-router.get("/user/:id", authMiddleware, getUser)
+router.get("/user/:id", authMiddleware, controller.getUser)
 
 /**
  * @swagger
@@ -116,7 +111,7 @@ router.get("/user/:id", authMiddleware, getUser)
  *       500:
  *         description: Erro ao atualizar usuário
  */
-router.put("/user/:id", authMiddleware, updateUser)
+router.put("/user/:id", authMiddleware, controller.updateUser)
 
 /**
  * @swagger
@@ -141,6 +136,6 @@ router.put("/user/:id", authMiddleware, updateUser)
  *       500:
  *         description: Erro ao remover usuário
  */
-router.delete("/user/:id", authMiddleware, deleteUser)
+router.delete("/user/:id", authMiddleware, controller.deleteUser)
 
 export default router;
