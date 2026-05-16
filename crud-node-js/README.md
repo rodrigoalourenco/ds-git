@@ -50,13 +50,16 @@ npx sequelize-cli db:create
 
 ### Criando migration
 ```
-npx sequelize-cli migration:generate --name create-clientes
-npx sequelize-cli migration:generate --name client-add-column-telefone
+npx sequelize-cli migration:generate --name nome-da-migration
 ```
 
 ### Executando as migration
-``` npx sequelize-cli db:migrate ```
+```
+npx sequelize-cli db:migrate
+```
 
 ### Voltando versão
-``` npx sequelize-cli db:migrate:undo ```
+```
+npx sequelize-cli db:migrate:undo
+```
 
